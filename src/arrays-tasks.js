@@ -122,8 +122,16 @@ function getStringsLength(arr) {
  *   getAverage([ 1, 10, 100, 1000 ])  => 277,75
  *   getAverage([ 2, 3, 3 ])  => 2,67
  */
-function getAverage(/* arr */) {
-  throw new Error('Not implemented');
+function getAverage(arr) {
+  const result = arr.reduce((acc, cur) => {
+    return acc + cur / arr.length;
+  }, 0);
+
+  if (result !== Math.floor(result)) {
+    const newResult = result.toFixed(2);
+    return +newResult;
+  }
+  return result;
 }
 
 /**
@@ -183,8 +191,9 @@ function insertItem(/* arr, item, index */) {
  *    getHead([ 'a', 'b', 'c', 'd'], 3) => [ 'a', 'b', 'c' ]
  *    getHead([ 'a', 'b', 'c', 'd'], 0) => []
  */
-function getHead(/* arr, n */) {
-  throw new Error('Not implemented');
+function getHead(arr, n) {
+  const newArr = arr.slice(0, n);
+  return newArr;
 }
 
 /**
@@ -199,8 +208,9 @@ function getHead(/* arr, n */) {
  *    getTail([ 'a', 'b', 'c', 'd'], 3) => [ 'b', 'c', 'd' ]
  *    getTail([ 'a', 'b', 'c', 'd'], 0) => []
  */
-function getTail(/* arr, n */) {
-  throw new Error('Not implemented');
+function getTail(arr, n) {
+  const newArr = arr.reverse().slice(0, n).reverse();
+  return newArr;
 }
 
 /**
