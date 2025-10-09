@@ -53,10 +53,9 @@ function sumArrays(/* arr1, arr2 */) {
  *    findElement(['Array', 'Number', 'string'], 'Date') => -1
  *    findElement([0, 1, 2, 3, 4, 5], 5) => 5
  */
-function findElement(/* arr, value */) {
-  throw new Error('Not implemented');
+function findElement(arr, value) {
+  return arr.indexOf(value);
 }
-
 /**
  * Returns a number of all occurrences of the specified item in an array.
  *
@@ -225,8 +224,9 @@ function getTail(arr, n) {
  *    doubleArray([0, 1, 2, 3, 4, 5]) => [0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5]
  *    doubleArray([]) => []
  */
-function doubleArray(/* arr */) {
-  throw new Error('Not implemented');
+function doubleArray(arr) {
+  const copyArr = arr.slice(0);
+  return copyArr.concat(arr);
 }
 
 /**
@@ -240,8 +240,8 @@ function doubleArray(/* arr */) {
  *    toStringList([1, 2, 3, 4, 5]) => '1,2,3,4,5'
  *    toStringList(['rock', 'paper', 'scissors']) => 'rock,paper,scissors'
  */
-function toStringList(/* arr */) {
-  throw new Error('Not implemented');
+function toStringList(arr) {
+  return arr.join(',');
 }
 
 /**
@@ -561,8 +561,21 @@ function sortDigitNamesByNumericOrder(/* arr */) {
  *   swapHeadAndTail([]) => []
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  const middleIndex = Math.floor(arr.length / 2);
+  if (arr.length % 2 === 0) {
+    const firstHalf = arr.slice(0, middleIndex);
+    const secondHalf = arr.slice(middleIndex);
+    const result = secondHalf.concat(firstHalf);
+    return result;
+  }
+  const middleInexForRightHalf = Math.round(arr.length / 2);
+
+  const firstHalf = arr.slice(0, middleIndex);
+  const secondHalf = arr.slice(middleInexForRightHalf);
+  const middleItem = arr[middleIndex];
+  const result = secondHalf.concat(middleItem).concat(firstHalf);
+  return result;
 }
 
 module.exports = {
