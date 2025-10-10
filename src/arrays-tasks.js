@@ -37,8 +37,27 @@ function getIntervalArray(/* start, end */) {
  *    sumArrays([10, 20, 30], [5, 10, 15]) => [15, 30, 45]
  *    sumArrays([-1, 0, 1], [1, 2, 3, 4]) => [0, 2, 4, 4]
  */
-function sumArrays(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function sumArrays(arr1, arr2) {
+  let newArr1 = [];
+  let newArr2 = [];
+  if (arr1.length > arr2.length) {
+    newArr2 = arr2.map((element) => element);
+    const diff = arr1.length - arr2.length;
+    newArr2.push(...Array(diff).fill(0));
+    newArr1 = arr1.map((element) => element);
+  } else if (arr1.length < arr2.length) {
+    newArr1 = arr1.map((element) => element);
+    const diff = arr2.length - arr1.length;
+    newArr1.push(...Array(diff).fill(0));
+    newArr2 = arr2.map((element) => element);
+  } else {
+    newArr1 = arr1.map((element) => element);
+    newArr2 = arr2.map((element) => element);
+  }
+
+  return newArr1.map((item, index) => {
+    return item + newArr2[index];
+  });
 }
 
 /**
@@ -70,8 +89,11 @@ function findElement(arr, value) {
  *    findAllOccurrences([ null, undefined, null ], null) => 2
  *    findAllOccurrences([ true, 0, 1, 'true' ], true) => 1
  */
-function findAllOccurrences(/* arr, item */) {
-  throw new Error('Not implemented');
+function findAllOccurrences(arr, item) {
+  const result = arr.filter((elem) => {
+    return elem === item;
+  });
+  return result.length;
 }
 
 /**
@@ -457,10 +479,10 @@ function getHexRGBValues(/* arr */) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  const result = arr.sort((a, b) => b - a);
+  return result.slice(0, n);
 }
-
 /**
  * Finds and returns an array containing only the common elements found in two arrays.
  *
